@@ -1,0 +1,629 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+).slice(0, 3);
+---
+
+<Base title="Kuma Huang | DECODE MZ 夾層世代品牌顧問">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-label">DECODE MZ — GENERATION BRAND CONSULTING</p>
+      <h1 class="hero-title">
+        KUMA<br/>
+        <span class="hero-accent">HUANG</span>
+      </h1>
+      <p class="hero-sub">
+        你的品牌，年輕人看不懂。<br/>
+        不是產品不好，是語言不對。
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">78%</span>
+          <span class="stat-label">的 MZ 世代不信任傳統品牌語言</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">40+</span>
+          <span class="stat-label">個品牌成功解碼世代溝通</span>
+        </div>
+      </div>
+      <a href="/contact" class="btn-primary">START DECODING</a>
+    </div>
+    <div class="hero-scroll">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">THE PROBLEM</p>
+      <h2 class="section-title">你的品牌正在失去<br/>下一個世代</h2>
+      <div class="problem-grid">
+        <div class="problem-card">
+          <span class="problem-num">01</span>
+          <h3>語言斷層</h3>
+          <p>你的行銷團隊用的語言，MZ 世代完全無感。不是文案不好，是整個溝通框架需要重建。</p>
+        </div>
+        <div class="problem-card">
+          <span class="problem-num">02</span>
+          <h3>價值錯位</h3>
+          <p>你強調品質與歷史，他們在乎真實與態度。品牌價值沒有錯，但表達方式需要翻譯。</p>
+        </div>
+        <div class="problem-card">
+          <span class="problem-num">03</span>
+          <h3>管道失效</h3>
+          <p>你還在投傳統媒體，他們活在短影音與社群。不是要放棄既有管道，是要打開新的接觸點。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 夾層 CONCEPT -->
+  <section class="section section-dark">
+    <div class="section-inner">
+      <p class="section-label">THE IN-BETWEEN</p>
+      <h2 class="section-title">夾層，是一種優勢</h2>
+      <div class="between-content">
+        <div class="between-text">
+          <p class="between-lead">
+            我不是 Z 世代，也不是嬰兒潮。我是<strong>夾層世代</strong>。
+          </p>
+          <p>
+            40 歲，有足夠的商業實戰經驗理解企業決策者的語言，同時保持對新世代文化的敏銳度與好奇心。
+          </p>
+          <p>
+            這個位置讓我成為最好的翻譯官——把你的品牌價值，轉譯成 MZ 世代聽得懂、願意買單的語言。
+          </p>
+        </div>
+        <div class="between-visual">
+          <div class="layer layer-top">
+            <span>DECISION MAKERS</span>
+            <span class="layer-age">50+</span>
+          </div>
+          <div class="layer layer-mid">
+            <span>DECODE MZ</span>
+            <span class="layer-age">THE BRIDGE</span>
+          </div>
+          <div class="layer layer-bottom">
+            <span>MZ GENERATION</span>
+            <span class="layer-age">18-35</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES PREVIEW -->
+  <section class="section">
+    <div class="section-inner">
+      <p class="section-label">SERVICES</p>
+      <h2 class="section-title">解碼服務</h2>
+      <div class="services-grid">
+        <a href="/services" class="service-card">
+          <span class="service-num">01</span>
+          <h3>Brand Audit</h3>
+          <p>品牌世代健檢</p>
+          <span class="service-arrow">&rarr;</span>
+        </a>
+        <a href="/services" class="service-card">
+          <span class="service-num">02</span>
+          <h3>MZ Translation</h3>
+          <p>品牌語言轉譯</p>
+          <span class="service-arrow">&rarr;</span>
+        </a>
+        <a href="/services" class="service-card">
+          <span class="service-num">03</span>
+          <h3>Channel Strategy</h3>
+          <p>溝通管道重構</p>
+          <span class="service-arrow">&rarr;</span>
+        </a>
+        <a href="/services" class="service-card">
+          <span class="service-num">04</span>
+          <h3>Executive Coaching</h3>
+          <p>主管世代思維訓練</p>
+          <span class="service-arrow">&rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST INSIGHTS -->
+  <section class="section section-dark">
+    <div class="section-inner">
+      <div class="section-header">
+        <div>
+          <p class="section-label">LATEST INSIGHTS</p>
+          <h2 class="section-title">最新洞察</h2>
+        </div>
+        <a href="/blog" class="btn-outline">VIEW ALL &rarr;</a>
+      </div>
+      <div class="posts-grid">
+        {posts.map((post) => (
+          <a href={`/blog/${post.id}`} class="post-card">
+            <time class="post-date">{post.data.date.toISOString().slice(0,10)}</time>
+            <h3 class="post-title">{post.data.title}</h3>
+            <p class="post-excerpt">{post.data.description}</p>
+            <span class="post-read">READ &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-section">
+    <div class="section-inner cta-inner">
+      <p class="section-label">READY?</p>
+      <h2 class="cta-title">讓你的品牌<br/>被下一個世代看見</h2>
+      <p class="cta-sub">免費 30 分鐘品牌世代診斷，找出你的溝通盲區。</p>
+      <a href="/contact" class="btn-primary">BOOK A CALL</a>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: calc(var(--nav-h) + 4rem) 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -20%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(168,85,247,0.2) 0%, rgba(236,72,153,0.1) 40%, transparent 70%);
+    pointer-events: none;
+    animation: heroPulse 8s ease-in-out infinite;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(6,182,212,0.15) 0%, rgba(59,130,246,0.08) 40%, transparent 70%);
+    pointer-events: none;
+    animation: heroPulse 10s ease-in-out infinite reverse;
+  }
+  @keyframes heroPulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.15); opacity: 1; }
+  }
+  .hero-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--hot-pink);
+    margin-bottom: 2rem;
+  }
+  .hero-title {
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    margin-bottom: 2rem;
+  }
+  .hero-accent {
+    background: var(--grad-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: 1.25rem;
+    color: var(--gray-400);
+    max-width: 480px;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  .stat-num {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    font-weight: 700;
+    background: var(--grad-cool);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+  }
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 1;
+  }
+  .hero-scroll span {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--gray-600);
+    writing-mode: vertical-rl;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--neon-purple), transparent);
+  }
+
+  /* BUTTONS */
+  .btn-primary {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    background: var(--grad-main);
+    color: var(--black);
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(168,85,247,0.3);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(168,85,247,0.5);
+  }
+  .btn-outline {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--gray-400);
+    border: 1px solid var(--gray-700);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover {
+    border-color: var(--neon-purple);
+    color: var(--neon-purple);
+    box-shadow: 0 0 20px rgba(168,85,247,0.2);
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 6rem 2rem;
+  }
+  .section-dark {
+    background: var(--dark);
+  }
+  .section-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    background: var(--grad-fire);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 3rem;
+  }
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+  }
+  .section-header .section-title { margin-bottom: 0; }
+
+  /* PROBLEM */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .problem-card {
+    background: var(--dark);
+    border: 1px solid var(--gray-800);
+    padding: 2.5rem;
+    border-radius: 12px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .problem-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 1px;
+    background: var(--grad-main);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .problem-card:hover::before { opacity: 1; }
+  .problem-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(168,85,247,0.15);
+  }
+  .problem-num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    background: var(--grad-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+  .problem-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .problem-card p {
+    font-size: 0.95rem;
+    color: var(--gray-400);
+    line-height: 1.7;
+  }
+
+  /* BETWEEN / 夾層 */
+  .between-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .between-lead {
+    font-size: 1.35rem;
+    color: var(--white);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+  }
+  .between-lead strong {
+    font-weight: 800;
+    background: var(--grad-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .between-text p {
+    color: var(--gray-400);
+    margin-bottom: 1rem;
+    line-height: 1.8;
+  }
+  .between-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .layer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+  }
+  .layer-age {
+    font-size: 0.7rem;
+    color: var(--gray-500);
+  }
+  .layer-top {
+    background: var(--gray-800);
+    color: var(--gray-400);
+    border-radius: 12px 12px 0 0;
+  }
+  .layer-mid {
+    background: var(--grad-main);
+    color: var(--black);
+    font-weight: 700;
+    padding: 2.5rem;
+    box-shadow: 0 0 40px rgba(168,85,247,0.3), 0 0 80px rgba(236,72,153,0.15);
+  }
+  .layer-mid .layer-age { color: rgba(0,0,0,0.5); }
+  .layer-bottom {
+    background: var(--gray-800);
+    color: var(--gray-400);
+    border-radius: 0 0 12px 12px;
+  }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--dark);
+    padding: 3rem;
+    position: relative;
+    border-radius: 12px;
+    border: 1px solid var(--gray-800);
+    transition: all 0.3s;
+    overflow: hidden;
+  }
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--grad-main);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .service-card:hover::after { opacity: 1; }
+  .service-card:hover {
+    border-color: transparent;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(168,85,247,0.12);
+  }
+  .service-card:nth-child(1):hover { box-shadow: 0 8px 30px rgba(168,85,247,0.15); }
+  .service-card:nth-child(2):hover { box-shadow: 0 8px 30px rgba(236,72,153,0.15); }
+  .service-card:nth-child(3):hover { box-shadow: 0 8px 30px rgba(6,182,212,0.15); }
+  .service-card:nth-child(4):hover { box-shadow: 0 8px 30px rgba(132,204,22,0.15); }
+  .service-num {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    background: var(--grad-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+  .service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .service-card p {
+    color: var(--gray-500);
+    font-size: 0.9rem;
+  }
+  .service-arrow {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    font-size: 1.5rem;
+    color: var(--gray-600);
+    transition: all 0.3s;
+  }
+  .service-card:hover .service-arrow {
+    color: var(--neon-purple);
+    transform: translateX(4px);
+  }
+
+  /* POSTS */
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .post-card {
+    background: var(--gray-900);
+    border: 1px solid var(--gray-800);
+    border-radius: 12px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
+  }
+  .post-card:hover {
+    border-color: rgba(168,85,247,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(168,85,247,0.1);
+  }
+  .post-date {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--hot-pink);
+    margin-bottom: 1rem;
+  }
+  .post-title {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+  .post-excerpt {
+    font-size: 0.9rem;
+    color: var(--gray-500);
+    flex: 1;
+    line-height: 1.6;
+  }
+  .post-read {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--gray-500);
+    margin-top: 1.5rem;
+    transition: all 0.3s;
+  }
+  .post-card:hover .post-read {
+    background: var(--grad-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: 8rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--grad-subtle);
+    opacity: 0.5;
+  }
+  .cta-inner {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .cta-title {
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 1.5rem;
+    background: var(--grad-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cta-sub {
+    font-size: 1.1rem;
+    color: var(--gray-400);
+    margin-bottom: 3rem;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .hero { padding-top: calc(var(--nav-h) + 2rem); }
+    .hero-stats { flex-direction: column; gap: 1.5rem; }
+    .hero-scroll { display: none; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .between-content { grid-template-columns: 1fr; gap: 3rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .posts-grid { grid-template-columns: 1fr; }
+    .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  }
+</style>

@@ -1,0 +1,248 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="About | Kuma Huang" description="夾層世代品牌教練 Kuma Huang — 用 10 年品牌實戰經驗，幫你的品牌與 MZ 世代接軌">
+
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-label">ABOUT</p>
+      <h1 class="page-title">The In-Between<br/>Advantage</h1>
+      <p class="page-sub">夾層世代的優勢</p>
+    </div>
+  </section>
+
+  <section class="about-content">
+    <div class="about-inner">
+      <div class="about-intro">
+        <div class="about-text">
+          <p class="about-lead">
+            我是一個不合時宜的人。
+          </p>
+          <p>
+            40 歲，在品牌與設計產業深耕超過 10 年。按照傳統劇本，我應該要用「資深」跟「經驗」來定位自己。但我更想用的詞是「好奇」和「翻譯」。
+          </p>
+          <p>
+            因為我發現，品牌產業最大的問題不是缺乏策略，而是缺乏翻譯——把企業決策者腦中的品牌價值，翻譯成 MZ 世代願意停下來看、聽、相信的語言。
+          </p>
+          <p>
+            我稱自己為「夾層世代」。不夠老到被尊稱為前輩，不夠年輕到被歸類為網路原住民。但正是這個尷尬的位置，讓我可以同時理解兩邊的邏輯。
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-label">CAREER PATH</div>
+        <div class="timeline-items">
+          <div class="timeline-item">
+            <span class="timeline-year">2015</span>
+            <div class="timeline-content">
+              <h3>品牌設計起步</h3>
+              <p>從平面設計進入品牌領域，開始理解「品牌不只是視覺」這件事。</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">2018</span>
+            <div class="timeline-content">
+              <h3>跨世代專案啟動</h3>
+              <p>第一次幫傳統企業做品牌年輕化，發現「世代翻譯」的巨大需求。</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">2021</span>
+            <div class="timeline-content">
+              <h3>品牌顧問轉型</h3>
+              <p>從接案設計師轉型為品牌策略顧問，專注世代溝通。</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <span class="timeline-year">2024</span>
+            <div class="timeline-content">
+              <h3>DECODE MZ 方法論成形</h3>
+              <p>建立系統性的世代品牌解碼方法論，以 Kuma Huang 個人品牌正式對外服務。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="values">
+        <div class="values-label">CORE BELIEFS</div>
+        <div class="values-grid">
+          <div class="value-item">
+            <h3>01 — 翻譯，不是迎合</h3>
+            <p>品牌不需要假裝年輕。需要的是把真正的價值用對的語言說出來。</p>
+          </div>
+          <div class="value-item">
+            <h3>02 — 理解，才能連結</h3>
+            <p>MZ 世代不是外星人。他們有邏輯、有標準，只是跟上一代不同。</p>
+          </div>
+          <div class="value-item">
+            <h3>03 — 數據驅動直覺</h3>
+            <p>每一個品牌建議都有數據支撐。但最終打動人的，還是那個對的洞察。</p>
+          </div>
+          <div class="value-item">
+            <h3>04 — 累積勝過翻新</h3>
+            <p>好的品牌不是推倒重來。是在既有基礎上，找到通往新世代的路。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="cta-band-inner">
+      <h2>準備好解碼了嗎？</h2>
+      <a href="/contact" class="btn-primary">LET'S TALK</a>
+    </div>
+  </section>
+
+</Base>
+
+<style>
+  .page-hero {
+    padding: calc(var(--nav-h) + 6rem) 2rem 4rem;
+    border-bottom: 1px solid var(--gray-800);
+  }
+  .page-hero-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+  .page-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    background: var(--grad-fire);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2rem;
+  }
+  .page-title {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 1rem;
+    background: var(--grad-cool);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .page-sub {
+    font-size: 1.1rem;
+    color: var(--gray-400);
+  }
+
+  .about-content { padding: 6rem 2rem; }
+  .about-inner { max-width: var(--max-w); margin: 0 auto; }
+
+  .about-intro { margin-bottom: 6rem; }
+  .about-text { max-width: 680px; }
+  .about-lead {
+    font-size: 1.75rem;
+    color: var(--white);
+    font-weight: 700;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+  }
+  .about-text p {
+    font-size: 1.05rem;
+    color: var(--gray-400);
+    margin-bottom: 1.5rem;
+    line-height: 1.9;
+  }
+
+  .timeline { margin-bottom: 6rem; }
+  .timeline-label, .values-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--gray-500);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--gray-800);
+  }
+  .timeline-items { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--gray-800);
+  }
+  .timeline-year {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    background: var(--grad-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    padding-top: 0.2rem;
+  }
+  .timeline-content h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .timeline-content p {
+    color: var(--gray-500);
+    font-size: 0.95rem;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .value-item {
+    background: var(--dark);
+    border: 1px solid var(--gray-800);
+    padding: 2.5rem;
+    border-radius: 12px;
+    transition: all 0.3s;
+  }
+  .value-item:hover {
+    border-color: rgba(168,85,247,0.3);
+    transform: translateY(-2px);
+  }
+  .value-item h3 {
+    font-size: 1rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+    margin-bottom: 1rem;
+    background: var(--grad-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .value-item p {
+    color: var(--gray-500);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .cta-band {
+    background: var(--grad-subtle);
+    padding: 5rem 2rem;
+  }
+  .cta-band-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cta-band h2 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    background: var(--grad-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  @media (max-width: 768px) {
+    .timeline-item { grid-template-columns: 80px 1fr; gap: 1rem; }
+    .values-grid { grid-template-columns: 1fr; }
+    .cta-band-inner { flex-direction: column; gap: 2rem; text-align: center; }
+  }
+</style>

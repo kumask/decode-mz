@@ -1,0 +1,215 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Base title={`${post.data.title} | Kuma Huang`} description={post.data.description}>
+
+  <article class="article">
+    <header class="article-header">
+      <div class="article-header-inner">
+        <a href="/blog" class="back-link">&larr; BACK TO INSIGHTS</a>
+        <div class="article-meta">
+          <time>{post.data.date.toISOString().slice(0,10)}</time>
+          <span class="article-cat">{post.data.category}</span>
+        </div>
+        <h1>{post.data.title}</h1>
+        <p class="article-desc">{post.data.description}</p>
+      </div>
+    </header>
+
+    <div class="article-body">
+      <div class="article-content">
+        <Content />
+      </div>
+    </div>
+
+    <footer class="article-footer">
+      <div class="article-footer-inner">
+        <div class="author">
+          <div class="author-avatar">D</div>
+          <div>
+            <p class="author-name">KUMA HUANG</p>
+            <p class="author-role">DECODE MZ — 夾層世代品牌顧問</p>
+          </div>
+        </div>
+        <a href="/contact" class="btn-primary">GET IN TOUCH</a>
+      </div>
+    </footer>
+  </article>
+
+</Base>
+
+<style>
+  .article-header {
+    padding: calc(var(--nav-h) + 6rem) 2rem 4rem;
+    border-bottom: 1px solid var(--gray-800);
+  }
+  .article-header-inner { max-width: 720px; margin: 0 auto; }
+
+  .back-link {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--gray-500);
+    display: inline-block;
+    margin-bottom: 3rem;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--neon-purple); }
+
+  .article-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .article-meta time {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--gray-500);
+  }
+  .article-cat {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    background: var(--grad-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+  }
+
+  .article-header h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .article-desc {
+    font-size: 1.15rem;
+    color: var(--gray-400);
+    line-height: 1.7;
+  }
+
+  .article-body {
+    padding: 4rem 2rem;
+  }
+  .article-content {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .article-content :global(h2) {
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+  .article-content :global(h3) {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  .article-content :global(p) {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: var(--gray-300);
+    margin-bottom: 1.5rem;
+  }
+  .article-content :global(ul),
+  .article-content :global(ol) {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+  .article-content :global(li) {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--gray-300);
+    margin-bottom: 0.5rem;
+  }
+  .article-content :global(strong) {
+    color: var(--white);
+    font-weight: 600;
+  }
+  .article-content :global(blockquote) {
+    border-left: 3px solid;
+    border-image: var(--grad-main) 1;
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+  }
+  .article-content :global(blockquote p) {
+    color: var(--gray-400);
+    font-style: italic;
+  }
+
+  .article-footer {
+    border-top: 1px solid var(--gray-800);
+    padding: 4rem 2rem;
+  }
+  .article-footer-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .author {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .author-avatar {
+    width: 48px;
+    height: 48px;
+    background: var(--grad-main);
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-weight: 900;
+    font-size: 1.2rem;
+    border-radius: 10px;
+  }
+  .author-name {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    color: var(--white);
+    font-weight: 600;
+  }
+  .author-role {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+  }
+
+  .btn-primary {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    background: var(--grad-main);
+    color: var(--black);
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(168,85,247,0.3);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(168,85,247,0.5);
+  }
+
+  @media (max-width: 768px) {
+    .article-footer-inner { flex-direction: column; gap: 2rem; }
+  }
+</style>
