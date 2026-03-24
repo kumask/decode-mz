@@ -241,8 +241,14 @@ import Base from '../layouts/Base.astro';
   }
 
   @media (max-width: 768px) {
-    .timeline-item { grid-template-columns: 80px 1fr; gap: 1rem; }
-    .values-grid { grid-template-columns: 1fr; }
+    .page-hero { padding: calc(var(--nav-h) + 3rem) 1.25rem 3rem; }
+    .page-title { font-size: clamp(2rem, 8vw, 3rem); }
+    .about-content { padding: 3rem 1.25rem; }
+    .about-lead { font-size: 1.35rem; }
+    .timeline-item { grid-template-columns: 80px 1fr; gap: 1rem; padding: 1.5rem 0; }
+    .values-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .value-item { padding: 2rem; }
+    .cta-band { padding: 3rem 1.25rem; }
     .cta-band-inner { flex-direction: column; gap: 2rem; text-align: center; }
   }
 </style>

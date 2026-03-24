@@ -210,6 +210,12 @@ const { Content } = await render(post);
   }
 
   @media (max-width: 768px) {
+    .article-header { padding: calc(var(--nav-h) + 3rem) 1.25rem 3rem; }
+    .article-header h1 { font-size: clamp(1.5rem, 6vw, 2rem); }
+    .article-body { padding: 3rem 1.25rem; }
+    .article-content :global(p) { font-size: 1rem; }
+    .article-content :global(h2) { font-size: 1.3rem; }
+    .article-footer { padding: 3rem 1.25rem; }
     .article-footer-inner { flex-direction: column; gap: 2rem; }
   }
 </style>

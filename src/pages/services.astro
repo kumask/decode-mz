@@ -342,10 +342,17 @@ import Base from '../layouts/Base.astro';
   }
 
   @media (max-width: 768px) {
+    .page-hero { padding: calc(var(--nav-h) + 3rem) 1.25rem 3rem; }
+    .page-title { font-size: clamp(2rem, 8vw, 3rem); }
+    .services-detail { padding: 0 1.25rem; }
     .service-block { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 0; }
+    .service-head h2 { font-size: 1.5rem; }
+    .process-section { padding: 4rem 1.25rem; }
     .process-steps { flex-direction: column; }
-    .step-line { width: 60px; height: 1px; margin: 0 2rem; }
+    .step { padding: 1.5rem 0; }
+    .step-line { width: 60px; height: 1px; margin: 0 0 0 0; }
     .service-meta { flex-direction: column; gap: 0.5rem; }
+    .cta-band { padding: 3rem 1.25rem; }
     .cta-band-inner { flex-direction: column; gap: 2rem; text-align: center; }
   }
 </style>

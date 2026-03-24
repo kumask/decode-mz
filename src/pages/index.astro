@@ -617,13 +617,33 @@ const posts = (await getCollection('blog')).sort(
 
   /* MOBILE */
   @media (max-width: 768px) {
-    .hero { padding-top: calc(var(--nav-h) + 2rem); }
+    .hero {
+      padding-top: calc(var(--nav-h) + 2rem);
+      min-height: auto;
+      padding-bottom: 3rem;
+    }
+    .hero-title {
+      font-size: clamp(2.5rem, 12vw, 4rem);
+      word-break: break-word;
+    }
+    .hero-sub { font-size: 1.05rem; }
     .hero-stats { flex-direction: column; gap: 1.5rem; }
     .hero-scroll { display: none; }
-    .problem-grid { grid-template-columns: 1fr; }
-    .between-content { grid-template-columns: 1fr; gap: 3rem; }
-    .services-grid { grid-template-columns: 1fr; }
-    .posts-grid { grid-template-columns: 1fr; }
+    .section { padding: 4rem 1.25rem; }
+    .section-title { font-size: clamp(1.75rem, 6vw, 2.5rem); }
+    .problem-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .problem-card { padding: 2rem; }
+    .between-content { grid-template-columns: 1fr; gap: 2rem; }
+    .between-lead { font-size: 1.15rem; }
+    .layer { padding: 1.5rem; font-size: 0.7rem; }
+    .services-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .service-card { padding: 2rem; }
+    .service-card h3 { font-size: 1.25rem; }
+    .service-arrow { top: 2rem; right: 2rem; }
+    .posts-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .post-card { padding: 2rem; }
     .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .cta-section { padding: 5rem 1.25rem; }
+    .cta-title { font-size: clamp(1.75rem, 6vw, 2.5rem); }
   }
 </style>

@@ -210,6 +210,12 @@ import Base from '../layouts/Base.astro';
   }
 
   @media (max-width: 768px) {
+    .page-hero { padding: calc(var(--nav-h) + 3rem) 1.25rem 3rem; }
+    .page-title { font-size: clamp(2rem, 8vw, 3rem); }
+    .contact-section { padding: 3rem 1.25rem; }
     .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea { font-size: 16px; }
   }
 </style>
