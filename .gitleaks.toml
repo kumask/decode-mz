@@ -1,0 +1,82 @@
+# Howdy custom gitleaks config — extends the default gitleaks ruleset.
+# Adds rules for secret shapes seen in Howdy's actual incident history
+# (Cowork-Hub memory: feedback_secret_scan_needs_custom_rules.md).
+# Rollout: CI quality gates program, 2026-10-18.
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "howdy-jwt-token"
+description = "JWT (e.g. Supabase service_role / anon key)"
+regex = '''eyJ[A-Za-z0-9_-]{15,}\.eyJ[A-Za-z0-9_-]{15,}\.[A-Za-z0-9_-]{20,}'''
+tags = ["jwt", "supabase"]
+
+[[rules]]
+id = "howdy-line-token"
+description = "LINE channel access token / channel secret, labeled"
+regex = '''(?i)(channel[_-]?access[_-]?token|channel[_-]?secret|line[_-]?token)["'=:\s]{1,5}[A-Za-z0-9+/_=-]{24,}'''
+tags = ["line"]
+
+[[rules]]
+id = "howdy-meta-access-token"
+description = "Meta/Facebook access token (EAA prefix)"
+regex = '''EAA[A-Za-z0-9]{20,}'''
+tags = ["meta", "facebook"]
+
+[[rules]]
+id = "howdy-resend-api-key"
+description = "Resend API key"
+regex = '''re_[A-Za-z0-9]{20,}'''
+tags = ["resend"]
+
+[[rules]]
+id = "howdy-openai-api-key"
+description = "OpenAI API key"
+regex = '''sk-(proj-)?[A-Za-z0-9_-]{20,}'''
+tags = ["openai"]
+
+[[rules]]
+id = "howdy-wp-application-password"
+description = "WordPress application password (space-grouped xxxx xxxx ... form)"
+regex = '''([A-Za-z0-9]{4}\s){5}[A-Za-z0-9]{4}'''
+tags = ["wordpress"]
+
+[[rules]]
+id = "howdy-userpass-in-url"
+description = "Credentials embedded in a URL (user:pass@host)"
+regex = '''[a-zA-Z][a-zA-Z0-9+.-]*://[^/\s:@"']{3,}:[^/\s:@"']{3,}@[^\s"'/]+'''
+tags = ["url", "basic-auth"]
+
+[[rules]]
+id = "howdy-zh-password-label"
+description = "Chinese 密碼/帳號密碼 label with an inline value (account/password table leak pattern)"
+regex = '''(密碼|帳號密碼)\s*[:：]\s*\S{4,}'''
+tags = ["zh-label"]
+
+[[rules]]
+id = "howdy-bearer-literal-token"
+description = "Literal Bearer token (excludes template interpolation like ${token} / process.env.X)"
+regex = '''(?i)\bbearer\s+[A-Za-z0-9_-]{24,}\b'''
+tags = ["bearer", "webhook"]
+
+[allowlist]
+description = "Known test fixtures / placeholders / examples — do not flag"
+regexes = [
+  '''sk-(proj-)?(test|example|xxxx+|placeholder|fake|dummy)[A-Za-z0-9_-]*''',
+  '''re_(test|example|xxxx+|dummy)[A-Za-z0-9_-]*''',
+  '''EAA(TEST|EXAMPLE|XXXX)[A-Za-z0-9]*''',
+  '''eyJ(hbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9)?\.?(test|example|fake|dummy)''',
+  '''your[_-]?(api[_-]?)?key[_-]?here''',
+  '''(?i)x{20,}|0{20,}|1{20,}''',
+]
+paths = [
+  '''(?i)\.gitleaks\.toml$''',
+  '''(?i)(^|/)fixtures?/''',
+  '''(?i)(^|/)__tests__/''',
+  '''(?i)(^|/)__mocks__/''',
+  '''(?i)\.test\.[jt]sx?$''',
+  '''(?i)\.spec\.[jt]sx?$''',
+  '''(?i)(^|/)test_.*\.py$''',
+  '''(?i)(^|/).*_test\.py$''',
+]
